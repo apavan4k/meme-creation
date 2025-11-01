@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Meme</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Upload Meme</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>All Memes</h2>
+    {% for meme in memes %}
+        <div>
+            <h3>{{ meme.title }}</h3>
+            <a href="{% url 'meme_detail' meme.pk %}">
+                <img src="{{ meme.image.url }}" width="200">
+            </a>
+        </div>
+    {% empty %}
+        <p>No memes yet!</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ meme.title }}</title>
+</head>
+<body>
+    <h1>{{ meme.title }}</h1>
+    <img src="{{ meme.image.url }}" width="400"><br>
+    <p>{{ meme.description }}</p>
+    <p><a href="{% url 'meme_edit' meme.pk %}">Edit Meme</a></p>
+    <p><a href="/">Back</a></p>
+</body>
+</html>
